@@ -8,6 +8,7 @@ namespace Parcial1_DanielaAraucoPadilla.Models
 {
     public class Currency
     {
+
         [Key]
         public string Code { get; set; }
         [Required]
