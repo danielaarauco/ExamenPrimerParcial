@@ -12,44 +12,44 @@ using Parcial1_DanielaAraucoPadilla.Models;
 
 namespace Parcial1_DanielaAraucoPadilla.Controllers
 {
-    public class ProductoesController : ApiController
+    public class ProductsController : ApiController
     {
         private DataContext db = new DataContext();
 
-        // GET: api/Productoes
-        public IQueryable<Producto> GetProductoes()
+        // GET: api/Products
+        public IQueryable<Product> GetProducts()
         {
-            return db.Productoes;
+            return db.Products;
         }
 
-        // GET: api/Productoes/5
-        [ResponseType(typeof(Producto))]
-        public IHttpActionResult GetProducto(string id)
+        // GET: api/Products/5
+        [ResponseType(typeof(Product))]
+        public IHttpActionResult GetProduct(string id)
         {
-            Producto producto = db.Productoes.Find(id);
-            if (producto == null)
+            Product product = db.Products.Find(id);
+            if (product == null)
             {
                 return NotFound();
             }
 
-            return Ok(producto);
+            return Ok(product);
         }
 
-        // PUT: api/Productoes/5
+        // PUT: api/Products/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutProducto(string id, Producto producto)
+        public IHttpActionResult PutProduct(string id, Product product)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != producto.ProductID)
+            if (id != product.ProductID)
             {
                 return BadRequest();
             }
 
-            db.Entry(producto).State = EntityState.Modified;
+            db.Entry(product).State = EntityState.Modified;
 
             try
             {
@@ -57,7 +57,7 @@ namespace Parcial1_DanielaAraucoPadilla.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ProductoExists(id))
+                if (!ProductExists(id))
                 {
                     return NotFound();
                 }
@@ -70,16 +70,16 @@ namespace Parcial1_DanielaAraucoPadilla.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Productoes
-        [ResponseType(typeof(Producto))]
-        public IHttpActionResult PostProducto(Producto producto)
+        // POST: api/Products
+        [ResponseType(typeof(Product))]
+        public IHttpActionResult PostProduct(Product product)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Productoes.Add(producto);
+            db.Products.Add(product);
 
             try
             {
@@ -87,7 +87,7 @@ namespace Parcial1_DanielaAraucoPadilla.Controllers
             }
             catch (DbUpdateException)
             {
-                if (ProductoExists(producto.ProductID))
+                if (ProductExists(product.ProductID))
                 {
                     return Conflict();
                 }
@@ -97,23 +97,23 @@ namespace Parcial1_DanielaAraucoPadilla.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = producto.ProductID }, producto);
+            return CreatedAtRoute("DefaultApi", new { id = product.ProductID }, product);
         }
 
-        // DELETE: api/Productoes/5
-        [ResponseType(typeof(Producto))]
-        public IHttpActionResult DeleteProducto(string id)
+        // DELETE: api/Products/5
+        [ResponseType(typeof(Product))]
+        public IHttpActionResult DeleteProduct(string id)
         {
-            Producto producto = db.Productoes.Find(id);
-            if (producto == null)
+            Product product = db.Products.Find(id);
+            if (product == null)
             {
                 return NotFound();
             }
 
-            db.Productoes.Remove(producto);
+            db.Products.Remove(product);
             db.SaveChanges();
 
-            return Ok(producto);
+            return Ok(product);
         }
 
         protected override void Dispose(bool disposing)
@@ -125,9 +125,9 @@ namespace Parcial1_DanielaAraucoPadilla.Controllers
             base.Dispose(disposing);
         }
 
-        private bool ProductoExists(string id)
+        private bool ProductExists(string id)
         {
-            return db.Productoes.Count(e => e.ProductID == id) > 0;
+            return db.Products.Count(e => e.ProductID == id) > 0;
         }
     }
 }

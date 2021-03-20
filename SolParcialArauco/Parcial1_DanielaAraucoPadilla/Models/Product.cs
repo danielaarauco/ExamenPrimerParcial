@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Parcial1_DanielaAraucoPadilla.Models
 {
-    public class Producto
+    public class Product
     {
         [Key]
         [StringLength(99999, MinimumLength = 1, ErrorMessage= "Ingrese entre 1 a 99999 caracteres")]
@@ -17,6 +17,5 @@ namespace Parcial1_DanielaAraucoPadilla.Models
         [Required]
         public Currency Price { get; set; }
         public DateTime LastBuy { get; set; }
-
     }
 }
