@@ -10,5 +10,7 @@ namespace Parcial1_DanielaAraucoPadilla.Models
 
     {
         public System.Data.Entity.DbSet<Parcial1_DanielaAraucoPadilla.Models.Producto> Productoes { get; set; }
+
+        public System.Data.Entity.DbSet<Parcial1_DanielaAraucoPadilla.Models.Currency> Currencies { get; set; }
     }
 }
